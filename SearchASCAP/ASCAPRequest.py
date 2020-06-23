@@ -1,24 +1,6 @@
-
-
-import requests
-import json
 import time
-url = "https://www.ascap.com/repertory#ace/search/workID/894535922" 
-url = "https://www.ascap.com/repertory#ace/search/workID/894535922"
-
-#r = requests.post(url, data=json.dumps(data), headers=headers)
-#r = requests.post(url)
-#print (r.status_code)
-#print (r.content)
-#print (r.json())
-
-# The page is rendered with JavaScript making more requests to fetch additional data. 
-
-# body, div, div "mainContent", div role="main", div class="pdynamicbutton", a class=call role=button>Agree and Proceed<
-
 from bs4 import BeautifulSoup
 from selenium import webdriver
-driver = webdriver.Chrome('C:\\Program Files (x86)\\nodejs\\chromedriver.exe')
 
 #<div class="workID">
 # Work ID:
@@ -95,7 +77,10 @@ def getTrackData(soup):
     trackTitle = getTrackTitle(soup)
     print('trackTitle', trackTitle)
         
+driver = webdriver.Chrome('C:\\Program Files (x86)\\nodejs\\chromedriver.exe')
+
 soup = getSoupPageFromAscap(894535922, 6) # STREET AT NIGHT from PRHYME
+print('Now manually click on AGREE AND PROCEED and I AGREE!!!')
 #clickOKAgreeBanners(soup)                  # does not work
 
 getTrackData(getSoupPageFromAscap(390222285, 1)) # I Love from LENNON SISTERS
